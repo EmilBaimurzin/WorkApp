@@ -1,10 +1,12 @@
 package com.example.workapp.GameFragment.recyclerView
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.workapp.R
 import com.example.workapp.databinding.ItemBinding
 
 class GameAdapter :

@@ -49,6 +49,7 @@ class GameFragment : ViewBindingFragment<GameFragmentBinding>(GameFragmentBindin
                     }
                     gameAdapter.notifyDataSetChanged()
                 }
+            delay(500)
         }
     }
 
@@ -56,7 +57,11 @@ class GameFragment : ViewBindingFragment<GameFragmentBinding>(GameFragmentBindin
         gameAdapter = GameAdapter()
         with(binding.gameRecyclerView) {
             adapter = gameAdapter
-            layoutManager = GridLayoutManager(requireContext(), 3)
+            layoutManager = object : GridLayoutManager(requireContext(), 3) {
+                override fun canScrollVertically(): Boolean {
+                    return false
+                }
+            }
             setHasFixedSize(true)
         }
         gameAdapter.itemClickListener = { position, value ->
@@ -77,7 +82,7 @@ class GameFragment : ViewBindingFragment<GameFragmentBinding>(GameFragmentBindin
 
     private fun timerForItem(position: Int) {
         lifecycleScope.launch {
-            delay(500)
+            delay(600)
             gameAdapter.items[position].let {
                 it.active = false
                 gameAdapter.notifyItemChanged(position)
@@ -95,9 +100,10 @@ class GameFragment : ViewBindingFragment<GameFragmentBinding>(GameFragmentBindin
             .setTitle("Pause")
             .setNeutralButton("Quit") { dialog, _ ->
                 dialog.cancel()
-                findNavController().popBackStack()
+                findNavController().navigate(R.id.action_gameFragment_to_fragmentMain)
             }
             .setPositiveButton("Continue") { dialog, _ ->
+                binding.startTextView.text = ""
                 startTimer()
                 dialog.cancel()
                 launch()
@@ -133,7 +139,7 @@ class GameFragment : ViewBindingFragment<GameFragmentBinding>(GameFragmentBindin
     }
 
     private fun start() {
-        lifecycleScope.launch {
+        generatorJob = lifecycleScope.launch {
             gameAdapter.items = viewModel.getEmptyList()
             binding.startTextView.text = "3"
             delay(1000)
@@ -151,6 +157,7 @@ class GameFragment : ViewBindingFragment<GameFragmentBinding>(GameFragmentBindin
 
     override fun onPause() {
         super.onPause()
+        generatorJob?.cancel()
         viewModel.stopTimer()
     }
 }

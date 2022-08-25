@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import com.example.workapp.R
 import com.example.workapp.ViewBindingFragment
@@ -27,5 +28,7 @@ class FragmentMain: ViewBindingFragment<MainFragmentBinding>(MainFragmentBinding
         }
         val score = sharedPreferences.getInt("Score", 0)
         binding.scoreTextView.text = "Highest score is $score"
+
+        requireActivity().onBackPressedDispatcher.addCallback(this) {}
     }
 }
