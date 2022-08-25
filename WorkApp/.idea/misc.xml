@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/drawable/circle.xml" value="0.1565" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/drawable/ring.xml" value="0.1565" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/layout/activity_main.xml" value="0.20833333333333334" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/layout/game_fragment.xml" value="0.20512820512820512" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/layout/item.xml" value="0.15710382513661203" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/layout/main_fragment.xml" value="0.20833333333333334" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/layout/result_fragment.xml" value="0.20833333333333334" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/layout/rules.xml" value="0.20833333333333334" />
+        <entry key="..\:/android/projects/WorkApp/app/src/main/res/xml/circle.xml" value="0.15710382513661203" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

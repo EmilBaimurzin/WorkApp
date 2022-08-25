@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragmentMain">
+
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="com.example.workapp.mainFragment.FragmentMain"
+        android:label="FragmentMain">
+        <action
+            android:id="@+id/action_fragmentMain_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.workapp.GameFragment.GameFragment"
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/fragmentMain"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_gameFragment_to_fragmentMain"
+            app:popUpTo="@id/fragmentMain"
+            app:destination="@id/fragmentMain" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.workapp.ResultFragment"
+        android:label="ResultFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@+id/fragment"
+        app:popUpToInclusive="true">
+        <argument
+            android:name="score"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_resultFragment_to_gameFragment"
+            app:popUpTo="@id/resultFragment"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_fragmentMain"
+            app:destination="@id/fragmentMain"
+            app:popUpTo="@+id/resultFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+</navigation>
